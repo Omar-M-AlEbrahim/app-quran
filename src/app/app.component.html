@@ -1,0 +1,44 @@
+
+
+@if (isErrorModalOpen) {
+<div class="modalp" >
+    <div class="modal-content">
+        <span class="close" (click)="closeErrorModal()">&times;</span>
+        <p>{{errorMessage}}</p>
+    </div>
+</div>
+}
+
+<header>البحث عن ايات القران الكريم</header>
+<div class="container">
+<div>
+    <label>رقم السورة</label>
+    <select  [(ngModel)]='chapter'>
+        @for (item of chapters; track $index) 
+        {
+            <option value="{{item}}"
+            >
+            {{item}}</option>
+        }
+    </select>
+</div>
+  
+  <div>
+    <label>رقم الاية</label>
+    <select [(ngModel)]='verse'>
+      
+        @for (item of verses; track $index) 
+        {
+            <option>{{item}}</option>
+        }
+     
+    </select>
+  </div>
+  <button (click)="search()">Search</button>
+    <h1 class="quranic-text-container">
+        @for (item of resultText; track $index)
+            {
+            <div class="quranic-text" >{{item}}</div>
+            }
+    </h1>
+</div>
